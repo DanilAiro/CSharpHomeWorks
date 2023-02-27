@@ -21,27 +21,8 @@ internal class Main
 
       if (m.CheckNumberOfTask(word))
       {
-        switch (word)
-        {
-          case "1":
-            {
-              t.Task64_FromNToOne();
-              m.ToEndTask();
-              break;
-            }
-          case "2":
-            {
-              t.Task66_SumOfNaturalFromMToN();
-              m.ToEndTask();
-              break;
-            }
-          case "3":
-            {
-              t.Task68_AckermanFunction();
-              m.ToEndTask();
-              break;
-            }
-        }
+        t.RunProgram(word);
+        m.ToEndTask();
       }
       else if (word.ToLower() == "e" || word.ToLower() == "exit" || word.ToLower() == "у")
       {
@@ -57,7 +38,7 @@ internal class Main
       }
       else
       {
-        Console.WriteLine($"Команда не была распознана, повторите ввод{Environment.NewLine}");
+        m.CantFindTask();
       }
     }
   }

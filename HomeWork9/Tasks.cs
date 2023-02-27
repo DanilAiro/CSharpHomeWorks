@@ -2,6 +2,28 @@
 {
   Methods m = new Methods();
 
+  public void RunProgram(string word)
+  {
+    switch (word)
+    {
+      case "1":
+        {
+          Task64_FromNToOne();
+          break;
+        }
+      case "2":
+        {
+          Task66_SumOfNaturalFromMToN();
+          break;
+        }
+      case "3":
+        {
+          Task68_AckermanFunction();
+          break;
+        }
+    }
+  }
+
   public void Task64_FromNToOne()
   {
     string text = $"Вы выбрали задачу номер 1{Environment.NewLine}"

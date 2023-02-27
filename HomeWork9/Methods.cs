@@ -96,6 +96,11 @@
     Console.Clear();
   }
 
+  public void CantFindTask()
+  {
+    Console.WriteLine($"Команда не была распознана, повторите ввод{Environment.NewLine}");
+  }
+
   #endregion
 }
 
