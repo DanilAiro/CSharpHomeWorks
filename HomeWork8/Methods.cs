@@ -42,7 +42,7 @@
         }
       }
     }
-    
+
     Console.WriteLine();
   }
 
@@ -277,7 +277,64 @@
 
   public void FillArraySpirally(int[,] array)
   {
-    
+    int n = 1;
+    int i = 0;
+    int j = 0;
+    array[i, j] = n;
+    int check = CheckDirection(array, n);
+
+    while (n <= array.GetLength(0) * array.GetLength(1))
+    {
+
+      switch (check)
+      {
+        case 1:
+          if (array[i, j + 1] == 0) array[i, j++] = n++;
+          check = CheckDirection(array, n);
+          break;
+
+        case 2:
+          if (array[i + 1, j] == 0) array[i++, j] = n++;
+          check = CheckDirection(array, n);
+          break;
+
+        case -1:
+          if (array[i, j - 1] == 0) array[i, j--] = n++;
+          check = CheckDirection(array, n);
+          break;
+
+        case -2:
+          if (array[i - 1, j] == 0) array[i--, j] = n++;
+          check = CheckDirection(array, n);
+          break;
+      }
+
+    }
+  }
+
+  public int CheckDirection(int[,] array, int n)
+  {
+    while (n <= array.GetLength(0) * array.GetLength(1))
+    {
+      if (n < array.GetLength(1))
+      {
+        return 1;
+      }
+      else if (n < array.GetLength(0) + array.GetLength(1) - 2)
+      {
+        return 2;
+      }
+      else if (n < array.GetLength(1) * 2 + array.GetLength(0) - 3)
+      {
+        return -1;
+      }
+      else if (n < array.GetLength(0) * 2 + array.GetLength(1) * 2 - 4)
+      {
+        return -2;
+      }
+    }
+
+      return 1;
   }
 
   #endregion
