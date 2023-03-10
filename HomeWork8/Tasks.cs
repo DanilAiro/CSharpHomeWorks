@@ -110,9 +110,88 @@
                 + $"Заполнить массив спирально.{Environment.NewLine}";
     Console.WriteLine(text);
 
-    int[,] array = new int[4,4];
-    m.FillArraySpirally(array);
+    int[,] array = new int[m.ReadInt("первую длину"), m.ReadInt("вторую длину")];
     m.PrintTwoDimensionArray(array);
+
+    bool isPlus = true;
+    bool isHorizontal = true;
+    int quantity = array.GetLength(0) * array.GetLength(1);
+    int n = 1;
+    int i = 0;
+    int j = 0;
+    int xOffset = 0;
+    int yOffset = 0;
+
+
+    while (n <= quantity)
+    {
+      if (isHorizontal)
+      {
+        if (isPlus)
+        {
+          if (j < array.GetLength(1) - xOffset)
+          {
+            array[i, j++] = n++;
+            m.PrintTwoDimensionArray(array);
+            Console.ReadKey();
+          }
+          else
+          {
+            i++;
+            j--;
+            isHorizontal = false;
+          }
+        }
+        else
+        {
+          if (j > xOffset)
+          {
+            array[i, --j] = n++;
+            m.PrintTwoDimensionArray(array);
+            Console.ReadKey();
+          }
+          else
+          {
+            isHorizontal = false;
+            xOffset++;
+          }
+        }
+      }
+      else //vertical
+      {
+        if (isPlus)
+        {
+          if (i < array.GetLength(0) - yOffset)
+          {
+            array[i++, j] = n++;
+            m.PrintTwoDimensionArray(array);
+            Console.ReadKey();
+          }
+          else
+          {
+            i--;
+            isHorizontal = true;
+            isPlus = false;
+            yOffset++;
+          }
+        }
+        else
+        {
+          if (i > yOffset)
+          {
+            array[--i, j] = n++;
+            m.PrintTwoDimensionArray(array);
+            Console.ReadKey();
+          }
+          else
+          {
+            j++;
+            isHorizontal = true;
+            isPlus = true;
+          }
+        }
+      }
+    }
   }
 }
 

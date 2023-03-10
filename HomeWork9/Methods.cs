@@ -32,7 +32,7 @@
 
   public int CalculateSumOfNaturalFromMToNRecursion(int m, int n)
   {
-    if (m > 0)
+    if (m > n - 1)
     {
       return m + CalculateSumOfNaturalFromMToNRecursion(m - 1, n);
     }
